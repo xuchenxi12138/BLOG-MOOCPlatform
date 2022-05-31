@@ -13,7 +13,7 @@ you can also post a blog or read other user's blog.
 
 # back:
 ## init:
-you need to set a **config.json** first, and the form just like this.
+you need to set a **config.json** first, and the form just like this.<br>
 ![alt config.json格式展示](./introimage/back_config_json_formdata.png)
 ```
   you nead to pip install flask,flask_cors,pymysql.
