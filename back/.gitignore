@@ -1,0 +1,5 @@
+/__pycache__
+/venv
+config.json
+test.py
+*.pyc
