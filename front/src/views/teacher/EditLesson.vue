@@ -16,7 +16,7 @@
                         <div class="chapter_index">{{ chapter['chapter_index'] }}</div>
                         <div class="chapter_title">{{ chapter['title'] }}</div>
                         <el-button size="mini" type="primary" @click="preEditChapter(chapter)">编辑</el-button>
-                        <el-button size="mini" type="danger">删除</el-button>
+                        <el-button size="mini" type="danger" @click="deleteChapter(chapter['chapter_id'])">删除</el-button>
                         <el-button type="text" class="" @click="fold(chapter)">展开
                             <i class="el-collapse-item__arrow el-icon-arrow-right" v-if="chapter['open']"></i>
                             <i class="el-collapse-item__arrow el-icon-arrow-right is-active" v-else></i>
@@ -33,7 +33,7 @@
                                 <span style="width: 300px;">{{ subchapter.title }}</span>
                                 <el-button type="primary" size="mini" @click="preEditSubChapter(subchapter)">编辑
                                 </el-button>
-                                <el-button type="danger" size="mini">删除</el-button>
+                                <el-button type="danger" size="mini" @click="deleteSubChapter(subchapter['subchapter_id'])">删除</el-button>
                             </div>
                             <el-collapse-transition>
                                 <div v-if="subChapterFormVisible">
@@ -420,7 +420,29 @@ export default {
                 this.coverImage=server+"/file/image/"+cover
                 this.$message(res.data)
             })
-        }
+        },
+        deleteChapter(id){
+            this.$confirm("确定要删除此章节？").then(()=>{
+                let formdata=new FormData()
+                formdata.append("id",id)
+                axios.post(server+"/teacher/delete_chapter",formdata).then(res=>{
+                    if(res.data["type"]=="success"){
+                        this.getLessonInfo()
+                    }
+                })
+            })
+        },
+        deleteSubChapter(id){
+            this.$confirm("确定要删除此章节？").then(()=>{
+                let formdata=new FormData()
+                formdata.append("id",id)
+                axios.post(server+"/teacher/delete_subchapter",formdata).then(res=>{
+                    if(res.data["type"]=="success"){
+                        this.getLessonInfo()
+                    }
+                })
+            })
+        },
     },
 
 }

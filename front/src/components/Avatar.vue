@@ -73,7 +73,7 @@
                     <el-button @click="dialogVisible2 = false">取消</el-button>
                 </el-col>
                 <el-col>
-                    <el-button type="primary">确定</el-button>
+                    <el-button type="primary" @click="join">确定</el-button>
                 </el-col>
             </el-row>
         </el-dialog>
@@ -259,6 +259,13 @@ export default {
                 default:
                     break;
             }
+        },
+        join(){
+            let username=sessionStorage.getItem("username")
+            axios.get(config["server"]+"/student/join_class?username="+username+"&class_id="+this.form["class_id"])
+            .then(res=>{
+                this.$message(res.data)
+            })
         }
     },
     mounted() {

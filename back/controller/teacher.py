@@ -717,3 +717,29 @@ def get_student_assignments():
         item["title"]=res3["title"]
         item["post_time"]=str(item["post_time"].date())
     return jsonify(res1)
+
+
+@teacherModule.route("/delete_chapter",methods=["POST"])
+def delete_chapter():
+    chapter_id=request.form.get("id")
+    db=MyDatabase()
+    sql1=f'delete from lesson_chapter where chapter_id="{chapter_id}"'
+    sql2=f'delete from lesson_subchapter where chapter_id="{chapter_id}"'
+    try:
+        db.curd(sql1)
+        db.curd(sql2,True)
+    except ValueError:
+        print(ValueError)
+    return jsonify({"type":"success","message":"OK"})
+
+
+@teacherModule.route("/delete_subchapter",methods=["POST"])
+def delete_subchapter():
+    subchapter_id=request.form.get("id")
+    db=MyDatabase()
+    sql=f'delete from lesson_subchapter where subchapter_id="{subchapter_id}"'
+    try:
+        db.curd(sql,True)
+    except ValueError:
+        print(ValueError)
+    return jsonify({"type":"success","message":"OK"})

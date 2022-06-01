@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "database": "teach_system_simple",
+  "user": "root",
+  "password": "xuchenxi.0824",
+  "port": 3306
+}

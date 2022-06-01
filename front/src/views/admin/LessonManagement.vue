@@ -5,6 +5,8 @@
         <el-button type="primary" size="small" @click="prepareAdd" lesson="el-icon-plus">添加
         </el-button>
         <el-button type="danger" size="small" lesson="el-icon-delete" @click="delItems">批量删除</el-button>
+        <el-button size="small" class="el-icon-document" type="success" @click="tableDialogVisible = true">导入
+                </el-button>
       </div>
       <div>
         <el-input>
