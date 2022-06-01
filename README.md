@@ -12,6 +12,7 @@ if you're in China,use "**cnpm install**" instead
 
 >you can also post a blog or read other user's blog.
 
+>if you need to start a website,run **npm run build**, then put the files in dist in you php server.
 
 # back:
 ## init:
