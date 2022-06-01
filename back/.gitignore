@@ -1,5 +1,5 @@
 /__pycache__
 /venv
-#config.json
+config.json
 test.py
 *.pyc
